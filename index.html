@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Joe-Free De Guzman | Virtual Assistant for Admin &amp; Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F5F5F5; --ink:#0A0A0A; --muted:#5A5A5A; --line:#E5E5E5;
+  --brand:#0A0A0A; --done:#E3A800; --done-bg:#FFF4CC; --on-brand:#FFFFFF;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A0A0A; --surface:#141414; --ink:#F5F5F5; --muted:#A3A3A3; --line:#262626;
+    --brand:#FFFFFF; --done:#F2B705; --done-bg:#2E2504; --on-brand:#0A0A0A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A0A0A; --surface:#141414; --ink:#F5F5F5; --muted:#A3A3A3; --line:#262626;
+  --brand:#FFFFFF; --done:#F2B705; --done-bg:#2E2504; --on-brand:#0A0A0A; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Montserrat","DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.15;margin:0;letter-spacing:-.02em}
+a{color:var(--ink);text-decoration-color:var(--done);text-decoration-thickness:2px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--done);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
+.brand{font-family:"Montserrat","DM Sans",sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink)}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--ink);box-shadow:0 3px 0 var(--done)}
+.btn{display:inline-block;background:var(--done);color:#0A0A0A;font-family:"Montserrat","DM Sans",sans-serif;font-size:.95rem;padding:14px 26px;border-radius:10px;font-weight:700;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--done);padding:12px 24px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:48px 0 72px}
+.hero h1{font-size:clamp(2.1rem,5vw,3.3rem);font-weight:800}
+.hero p.lead{font-size:1.2rem;color:var(--muted);max-width:34em;margin:22px 0 30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.queue{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--done);border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(18,35,62,.08)}
+.queue h2{font-size:1.05rem;margin-bottom:4px}
+.queue .sub{color:var(--muted);font-size:.9rem;margin:0 0 16px}
+.queue ul{list-style:none;margin:0;padding:0}
+.queue li{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-weight:500}
+.box{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;color:transparent;font-size:15px;font-weight:700;animation:tick .35s forwards;animation-delay:calc(var(--i)*.55s + .6s)}
+@keyframes tick{to{background:var(--done);border-color:var(--done);color:#0A0A0A}}
+.queue .foot{margin:14px 0 0;padding:10px 14px;background:var(--done-bg);color:var(--ink);border-radius:10px;font-weight:600;font-size:.92rem}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section>h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin-bottom:10px}
+section>h2::after{content:"";display:block;width:56px;height:5px;background:var(--done);margin-top:14px;border-radius:3px}
+.intro{color:var(--muted);max-width:40em;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--done);border-radius:12px;padding:24px}
+.card h3{font-size:1.2rem;margin-bottom:8px}
+.card p{margin:0;color:var(--muted)}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:36px;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.proof div{padding:20px 22px;border-right:1px solid var(--line)}
+.proof div:last-child{border-right:0}
+.proof b{display:block;font-family:"Montserrat","DM Sans",sans-serif;font-size:1.2rem}
+.proof span{color:var(--muted);font-size:.92rem}
+.timeline{list-style:none;margin:0;padding:0 0 0 28px;border-left:3px solid var(--brand)}
+.timeline>li{position:relative;padding-bottom:40px}
+.timeline>li:last-child{padding-bottom:0}
+.timeline>li::before{content:"";position:absolute;left:-37px;top:7px;width:15px;height:15px;border-radius:50%;background:var(--done);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--brand)}
+.timeline .yrs{color:var(--ink);font-weight:600;font-size:.95rem;display:inline-block;line-height:1.4;border-bottom:3px solid var(--done)}
+.timeline h3{font-size:1.3rem;margin:2px 0}
+.timeline .co{color:var(--muted);margin:0 0 10px;font-weight:500}
+.timeline ul{margin:0;padding-left:20px;max-width:46em}
+.timeline li li{margin-bottom:6px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.skills h3{font-size:1.05rem;margin-bottom:10px}
+.skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.skills li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.92rem}
+.contact{background:var(--brand);color:var(--on-brand);border-radius:20px;padding:44px 32px;text-align:center}
+.contact h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin-bottom:12px}
+.contact p{margin:0 auto 24px;max-width:34em;opacity:.92}
+.contact .btn{background:var(--done);color:#0A0A0A}
+.contact .alt{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px 28px;max-width:none;margin:24px auto 0;font-size:.95rem}
+.contact a{color:inherit}
+footer{padding:36px 0 48px;color:var(--muted);font-size:.9rem;text-align:center}
+.eduline{margin-top:36px;color:var(--muted)}
+.eduline b{color:var(--ink)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.hero-in{animation:rise .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0)*.14s)}
+.queue .foot{animation:pop .6s 3.8s both}
+.btn{transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 rgba(10,10,10,.18)}
+.card{transition:transform .2s ease,box-shadow .2s ease}
+.card:hover,.js .card.rv.in:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.1)}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none;transition-delay:calc(var(--s,0)*80ms)}
+.js .rv.done{transition:transform .2s ease,box-shadow .2s ease;transition-delay:0s}
+.js section>h2::after{transform:scaleX(0);transform-origin:left;transition:transform .7s .15s cubic-bezier(.2,.7,.2,1)}
+.js section>h2.in::after{transform:scaleX(1)}
+.js .timeline>li::before{transform:scale(0);transition:transform .45s .3s cubic-bezier(.3,1.6,.5,1)}
+.js .timeline>li.in::before{transform:scale(1)}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:36px;padding-top:24px}
+  .proof div{border-right:0;border-bottom:1px solid var(--line)}
+  .proof div:last-child{border-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .box{animation:none;background:var(--done);border-color:var(--done);color:#0A0A0A}
+  html{scroll-behavior:auto}
+  .hero-in,.queue .foot{animation:none}
+  .btn,.card{transition:none}
+  .btn:hover,.card:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">Joe-Free De Guzman</a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1 class="hero-in" style="--d:0">Admin work done right, and done on time.</h1>
+        <p class="lead hero-in" style="--d:1">I'm Joe-Free, a virtual assistant with 8 years in customer operations, order processing, and insurance brokerage admin. I keep queues moving, records accurate, and deadlines met.</p>
+        <div class="cta hero-in" style="--d:2">
+          <a class="btn" href="#contact">Hire me</a>
+          <a class="btn ghost" href="#experience">See my experience</a>
+        </div>
+      </div>
+      <aside class="queue hero-in" style="--d:3" aria-label="Sample admin queue">
+        <h2>A typical day in my queue</h2>
+        <p class="sub">Drawn from my current role</p>
+        <ul>
+          <li style="--i:0"><span class="box" aria-hidden="true">✓</span>Log new submissions</li>
+          <li style="--i:1"><span class="box" aria-hidden="true">✓</span>Send coverage requests to underwriters</li>
+          <li style="--i:2"><span class="box" aria-hidden="true">✓</span>Check pricing in the market portal</li>
+          <li style="--i:3"><span class="box" aria-hidden="true">✓</span>Review loss run reports</li>
+          <li style="--i:4"><span class="box" aria-hidden="true">✓</span>Prepare policy files for renewal</li>
+          <li style="--i:5"><span class="box" aria-hidden="true">✓</span>Clear the inbox and confirm tomorrow's calendar</li>
+        </ul>
+        <p class="foot">All done before the deadline.</p>
+      </aside>
+    </div>
+  </main>
+
+  <section id="services">
+    <h2>How I can help</h2>
+    <p class="intro">Clear, careful support for founders, small teams, and agencies who need someone dependable on the back end.</p>
+    <div class="grid">
+      <div class="card"><h3>Admin and data upkeep</h3><p>Database updates, record cleanup, file preparation, and ad-hoc requests handled without data discrepancies.</p></div>
+      <div class="card"><h3>Order and account management</h3><p>Daily order queues, account updates, and order tracking from start to finish.</p></div>
+      <div class="card"><h3>Customer support</h3><p>Inbox, phone, and live chat support that resolves issues and keeps customers informed.</p></div>
+      <div class="card"><h3>Insurance and brokerage admin</h3><p>Workers' compensation submissions, quote support, loss run review, and renewal files.</p></div>
+      <div class="card"><h3>Website setup support</h3><p>Helping people set up accounts and build their sites on Wix.</p></div>
+      <div class="card"><h3>Email and inbox management</h3><p>Sorting and prioritizing your inbox, drafting and sending replies, following up, and flagging what needs your attention.</p></div>
+      <div class="card"><h3>Calendar management</h3><p>Scheduling meetings, handling invites and changes, and setting reminders so your days stay clear and on time.</p></div>
+      <div class="card"><h3>Deadline coordination</h3><p>Keeping clients and partners in the loop so nothing slips.</p></div>
+    </div>
+    <div class="proof">
+      <div><b>800–1,000</b><span>customer orders handled daily in one role</span></div>
+      <div><b>100%</b><span>pricing accuracy on coverage requests</span></div>
+      <div><b>100%</b><span>on-time renewal rate</span></div>
+      <div><b>70</b><span>inbound inquiries resolved daily in another role</span></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p class="intro">Eight years across customer service, process operations, and brokerage admin.</p>
+    <ol class="timeline">
+      <li>
+        <span class="yrs">2023 to present</span>
+        <h3>Brokerage Admin Assistant</h3>
+        <p class="co">Acquire Intelligence</p>
+        <ul>
+          <li>Work with multiple underwriters each week to process workers' compensation coverage requests, with 100% pricing accuracy in the market portal.</li>
+          <li>Manage deadlines and keep communication smooth between clients and underwriters so coverage is timely and correct.</li>
+          <li>Bind quotes every month, analyze complex loss run reports, and prepare policy files for a 100% on-time renewal rate.</li>
+          <li>Log new submissions and take on special projects from underwriters.</li>
+        </ul>
+      </li>
+      <li>
+        <span class="yrs">2022 to 2023</span>
+        <h3>Senior Process Executive</h3>
+        <p class="co">Infosys BPM Limited</p>
+        <ul>
+          <li>Managed a daily queue of 800–1,000 customer orders at a 100% accuracy rate, meeting every SLA deadline.</li>
+          <li>Maintained and updated a customer account database, resolving ad-hoc requests with zero data discrepancies.</li>
+        </ul>
+      </li>
+      <li>
+        <span class="yrs">2021 to 2022</span>
+        <h3>Customer Service Representative / Tech Support</h3>
+        <p class="co">Telus International</p>
+        <ul>
+          <li>Resolved issues and helped customers with account management and website creation.</li>
+          <li>Guided customers daily through complex account setups and Wix.com site builds, with an average CSAT score of 100%.</li>
+        </ul>
+      </li>
+      <li>
+        <span class="yrs">2018 to 2021</span>
+        <h3>Customer Service Representative</h3>
+        <p class="co">Alorica</p>
+        <ul>
+          <li>Managed customer inquiries and concerns and kept order tracking smooth from start to finish.</li>
+          <li>Resolved an average of 70 inbound inquiries a day by phone, email, and chat, consistently beating resolution time targets.</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="eduline"><b>Education:</b> Bachelor of Science in Civil Engineering, University of Pangasinan</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills and tools</h2>
+    <p class="intro">What I bring to your workload.</p>
+    <div class="skills">
+      <div><h3>Operations</h3><ul><li>Brokerage operations</li><li>Order and account management</li><li>Administrative support</li><li>Documentation accuracy</li></ul></div>
+      <div><h3>Working style</h3><ul><li>Email and inbox management</li><li>Calendar management</li><li>Deadline management</li><li>Cross-functional collaboration</li><li>Technical support</li></ul></div>
+      <div><h3>Microsoft Office</h3><ul><li>Word</li><li>Excel</li><li>PowerPoint</li><li>Outlook</li><li>Teams</li></ul></div>
+      <div><h3>Google tools</h3><ul><li>Gmail</li><li>Google Calendar</li><li>Google Drive</li><li>Docs</li><li>Sheets</li><li>Slides</li><li>Meet</li></ul></div>
+      <div><h3>Other tools</h3><ul><li>CRM tools</li><li>Insurance portals</li><li>Wix</li><li>Web platforms</li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Need reliable admin support?</h2>
+      <p>Tell me what's piling up. I'll reply with how I can take it off your plate.</p>
+      <a class="btn" href="mailto:deguzmangio2497@gmail.com?subject=VA%20inquiry">Email Joe-Free</a>
+      <p class="alt"><span>deguzmangio2497@gmail.com</span><a href="tel:+639196447190">0919 644 7190</a><a href="https://www.linkedin.com/in/joe-free-de-guzman-b8b05737a/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 Joe-Free De Guzman</footer>
+</div>
+<script>
+(function(){
+  var d=document.documentElement;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  d.classList.add('js');
+  var groups=new Map();
+  document.querySelectorAll('.card,.proof div,.timeline>li,.skills>div,.contact').forEach(function(el){
+    el.classList.add('rv');
+    var n=groups.get(el.parentNode)||0;
+    el.style.setProperty('--s',Math.min(n,5));
+    groups.set(el.parentNode,n+1);
+  });
+  function count(box){
+    box.querySelectorAll('b').forEach(function(b){
+      var t=b.textContent,nums=t.match(/[\d,]+/g);
+      if(!nums)return;
+      var vals=nums.map(function(s){return parseInt(s.replace(/,/g,''),10)}),t0=null;
+      function step(ts){
+        if(!t0)t0=ts;
+        var p=Math.min((ts-t0)/1300,1),e=1-Math.pow(1-p,3),i=0;
+        b.textContent=t.replace(/[\d,]+/g,function(){return Math.round(vals[i++]*e).toLocaleString('en-US')});
+        if(p<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target;
+      el.classList.add('in');
+      io.unobserve(el);
+      if(el.classList.contains('rv')){
+        setTimeout(function(){el.style.setProperty('--s',0);el.classList.add('done')},1300);
+      }
+      if(el.classList.contains('proof'))count(el);
+    });
+  },{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv,section>h2,.proof').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
